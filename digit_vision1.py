@@ -13,4 +13,4 @@ fig,ax=plt.subplots(
 ax_flat=ax.flatten()
 for i in range(2):
  ax_flat[i].imshow(train_images[i])
-plt.show()
+plt.show() 
