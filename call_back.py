@@ -2,9 +2,10 @@ import tensorflow as tf
 import numpy as np
 from keras.src.callbacks import callback
 class MyCallback(tf.keras.callbacks.Callback):
-    def on_epoch_end(self, epoch, logs={}):
-        if logs.get('accuracy')>0.5:
-            print("model has converged")
+    def on_epoch_end(self, epoch, logs=None):
+        if logs['accuracy']>0.97:
+            print()
+            print("training:stop")
             self.model.stop_training=True
 
 callbacks=MyCallback()
