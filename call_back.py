@@ -18,8 +18,9 @@ model=tf.keras.models.Sequential([
     tf.keras.Input(shape=(28,28,1)),
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dense(128, activation=tf.nn.relu),
-    tf.keras.layers.Dense(10, activation=tf.nn.softmax),
+    tf.keras.layers.Dense(10, activation=tf.nn.softmax)
 
 ])
 model.compile(optimizer='adam',loss='sparse_categorical_crossentropy',metrics=['accuracy'])
-model.fit(train_images, train_labels, epochs=5,callbacks=[callbacks])
+df=model.fit(train_images, train_labels, epochs=5,callbacks=[callbacks])
+print(df)
