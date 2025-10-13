@@ -1,10 +1,13 @@
 import os
-
+from io import BytesIO
+from IPython.display import display
 import tensorflow as tf
 import numpy as np
 from keras.src.metrics.accuracy_metrics import accuracy
 from matplotlib import pyplot as plt
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
+from ipywidgets import  widgets
+
 
 data_dir=os.path.expanduser('~/Desktop/file3')
 data_dir_val=os.path.expanduser('~/Desktop/file4')
@@ -75,4 +78,28 @@ plt.plot(epochs, acc_val, 'r', label='Validation Accuracy')
 plt.title('Training and Validation Accuracy')
 plt.legend(loc=0)
 plt.show()
+uploader=widgets.FileUpload(accept='image/*',multiple_files=True)
+display(uploader)
+out=widgets.Output()
+display(out)
+def predict_file_value(filename,file,out):
+  image=tf.keras.preprocessing.image.load_img(file, target_size=(150,150)),
+  image=tf.keras.preprocessing.image.img_to_array(image)
+  image=image/255
+  image=np.expand_dims(image,axis=0)
+  predic_val=model.predict(image,verbose=0)[0][0]
+  with out:
+      if predic_val>0.5:
+          print(filename +"it is horse")
+      else:
+          print(filename+"it is not horse")
 
+
+
+def file_upload(change):
+  item=change.new
+  file_jgp_data=BytesIO(item.content)
+  predict_file_value(item.name,file_jgp_data,out)
+
+
+uploader.observe(file_upload, names='value')
