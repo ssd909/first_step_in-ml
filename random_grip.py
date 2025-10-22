@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.model_selection import train_test_split,RandomizedSearchCV
 from sklearn.svm import SVC
-from scipy.stats import uniform, loguniform
+from scipy.stats import  loguniform
 
 data={
     'weight' :[100,120,90,230,140,234,312,450,367,98],

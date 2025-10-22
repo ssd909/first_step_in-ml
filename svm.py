@@ -40,7 +40,7 @@ print(x_train.shape,x_test.shape,y_train.shape,y_test.shape)
 ""
 ""
 #training svm model
-svm_model=SVC(kernel='linear',gamma=0.01,C=0.1,random_state=42)
+svm_model=SVC(kernel='sigmoid',gamma=0.7784063026431617,C= 427.3620086107224,random_state=42)
 svm_model.fit(x_train,y_train)
 y_pred=svm_model.predict(x_test)
 
