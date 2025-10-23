@@ -17,7 +17,7 @@ data={
 }
 table=pd.DataFrame(data=data)
 table.to_csv('table_class.csv',index=False)
-loaded_data=pd.read_csv('../table_class.csv')
+loaded_data=pd.read_csv('table_class.csv')
 loaded_data['target_bool']=loaded_data['target'].map({'apple':1,'orange':0})
 loaded_data.drop('target',axis=1,inplace=True)
 ""
