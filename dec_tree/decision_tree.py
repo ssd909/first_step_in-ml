@@ -9,7 +9,7 @@ x=iris.data
 y=iris.target
 x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.3,random_state=42)
 
-tree_model=DecisionTreeClassifier(criterion='entropy',random_state=42)
+tree_model=DecisionTreeClassifier(criterion='gini',random_state=42)
 tree_model.fit(x_train,y_train)
 accuracy=tree_model.score(x_test,y_test)
 plt.figure(figsize=[15,10])

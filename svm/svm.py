@@ -1,8 +1,9 @@
 import pandas as pd
 from sklearn.preprocessing import MinMaxScaler
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split,cross_val_score
 from matplotlib import pyplot as plt
 from sklearn.svm import SVC
+from sklearn.metrics import classification_report,confusion_matrix
 import numpy as np
 
 
@@ -34,7 +35,7 @@ print(loaded_data)
 
 y=loaded_data['target_bool']
 x=loaded_data.drop('target_bool',axis=1)
-x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.2,random_state=42)
+x_train,x_test,y_train,y_test=train_test_split(x,y,test_size=0.5,random_state=42)
 print(x_train.shape,x_test.shape,y_train.shape,y_test.shape)
 
 ""
@@ -43,6 +44,8 @@ print(x_train.shape,x_test.shape,y_train.shape,y_test.shape)
 svm_model=SVC(kernel='sigmoid',gamma=0.7784063026431617,C= 427.3620086107224,random_state=42)
 svm_model.fit(x_train,y_train)
 y_pred=svm_model.predict(x_test)
+print(classification_report(y_test,y_pred))
+print(confusion_matrix(y_test,y_pred))
 
 ""
 ""
