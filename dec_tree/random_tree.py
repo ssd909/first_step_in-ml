@@ -1,10 +1,7 @@
-import numpy as np
-from scipy.stats import bootstrap
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.model_selection import train_test_split,cross_val_score,GridSearchCV
+from sklearn.model_selection import train_test_split,GridSearchCV
 from sklearn.metrics import classification_report
 from sklearn.datasets import load_iris
-from sklearn.tree import DecisionTreeClassifier
 
 iris=load_iris()
 
