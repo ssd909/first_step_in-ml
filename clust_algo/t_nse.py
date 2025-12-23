@@ -1,6 +1,5 @@
 import matplotlib.pyplot as plt
 import pandas as pd
-from pandas.core.interchange.dataframe_protocol import DataFrame
 from sklearn.datasets import load_iris
 from sklearn.manifold import TSNE
 from sklearn.preprocessing import StandardScaler

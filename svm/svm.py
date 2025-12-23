@@ -61,15 +61,15 @@ Z = svm_model.predict(sd_data)
 Z = Z.reshape(xx.shape)
 plt.figure(figsize=(10, 7))
 
-# გამყოფი საზღვრის (Decision Boundary) შევსება ფერით
+
 plt.contourf(xx, yy, Z, alpha=0.3, cmap=plt.cm.coolwarm)
 
-# --- 5. მონაცემთა წერტილების დახატვა ---
+
 plt.scatter(
-    x_train.iloc[:, 0], # X ღერძი (წონა)
-    x_train.iloc[:, 1], # Y ღერძი (სიკაშკაშე)
-    c=y_train, # ფერი კლასის მიხედვით
-    cmap=plt.cm.coolwarm, # ფერების რუკა
+    x_train.iloc[:, 0],
+    x_train.iloc[:, 1],
+    c=y_train,
+    cmap=plt.cm.coolwarm,
     marker='o',
     edgecolor='k',
     s=70 # ზომა
