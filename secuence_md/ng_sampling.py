@@ -1,4 +1,5 @@
 import numpy as np
+from collections import Counter
 import re
 txt= "/home/amirani/Desktop/txt"
 with open(txt) as f:
@@ -8,8 +9,13 @@ new_tx=text.lower()
 text1 = re.sub(r'\[\d+\]', '', new_tx)
 text2 = re.sub(r'[^a-z\s]', '', new_tx)
 text3=text2.split()
-sorted_tx=sorted(list(set(text3)))
+counter_dict = Counter(text3)
 
+
+sorted_tx=sorted(list(set(text3)))
+word_count=np.array([counter_dict[word] for word in sorted_tx])
+w_c=word_count**0.75
+prob=w_c/np.sum(w_c)
 word2idx={word:idx for word,idx in enumerate(sorted_tx)}
 idx2word={idx:word for word,idx in enumerate(sorted_tx)}
 embedding_matrix = np.random.uniform(low=-0.5,high=0.5,size=(len(word2idx)+1,10))
@@ -27,8 +33,8 @@ for i in range(1,len(sz)-1):
 
     all_idx=np.arange(len(sorted_tx))
 
-    all_idx1=all_idx[all_idx!=i]
-    ng_idx=np.random.choice(all_idx,size=5,replace=False)
+
+    ng_idx=np.random.choice(all_idx,size=5,replace=False,p=prob)
 
     pos_score1=np.dot(embedding_matrix[idx2word[target]],embedding_matrix[idx2word[back_word]])
 
